@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>{{charity.name}}</h1>
+    <h5>{{charity.description}}</h5>
+    <p>Founded By {{charity.founder}}</p>
+    <h2>Raised: ${{charity.totalDonations}}.00</h2>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Previous Donations</a>
+    <a href="/charities/{{charity._id}}/donations/new" class="btn btn-success">Donate</a>
+    <a href="/charities/{{charity._id}}/delete?_method=delete" class="btn btn-danger">Delete</a>
+    <div class="collapse" id="collapseExample">
+        {{#each charity.donations}}
+        <div class="card card-body">
+        <h2>${{this.amount}}.00</h2>
+        <h6>Donated By: {{this.donor}}</h6>
+        <p>Are you {{this.donor}}? <a href="/charities/{{this.charityId}}/donations/{{this._id}}/update">Update Donation</a></p>
+        </div>
+        {{/each}}
+    </div>
+</div>
