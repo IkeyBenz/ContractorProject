@@ -51,12 +51,19 @@ module.exports = function (app) {
         });
     });
 
-    app.delete('/charities/:charityId/donations/:dontationId/delete', (req, res) => {
-        Donation.findOneAndDelete({ _id: req.params.donationId }).then(donation => {
-            Charity.findOneAndUpdate({ _id: donation.charityId }, { $inc: { totalDonations: -donation.amount }});
-        }).then(charity => {
-            res.redirect(`/charities/${charity._id}/`);
-        }).catch(console.error);
+    app.delete('/charities/:charityId/donations/:donationId/delete', (req, res) => {
+        Donation.findById(req.params.donationId, (err, donation) => {
+            Charity.findOneAndUpdate(
+                { _id: req.params.charityId }, 
+                { $inc: { totalDonations: -donation.amount } }, (err, doc, result) => {
+                    if (err) console.error(err.message);
+                    Donation.findOneAndDelete(
+                        { _id: req.params.donationId }, (err, result) => {
+                            if (err) console.log(err.message);
+                            res.redirect(`/charities/${req.params.charityId}`);
+                        });
+                });
+        });
     });
     
 }
