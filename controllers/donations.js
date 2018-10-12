@@ -12,7 +12,7 @@ module.exports = function (app) {
     app.post('/charities/:charityId/donations/new', (req, res) => {
         const donation = new Donation({ charityId: req.params.charityId, ...req.body });
         donation.save().then(donation => {
-            Charity.findOneAndUpdate(req.params.charityId, {
+            Charity.findOneAndUpdate({ _id: req.params.charityId }, {
                 $inc: { totalDonations: donation.amount }
             }, (error, doc, result) => {
                 if (error) {console.error(error.message)}
