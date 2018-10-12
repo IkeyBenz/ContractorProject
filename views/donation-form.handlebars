@@ -9,11 +9,11 @@
 
 <div class="form-group">
     <label for="amount">Amount:</label>
-    <input type="text" class="form-control" name="amount" value="{{donation.amount}}">
+    <input type="number" class="form-control" name="amount" value="{{donation.amount}}" required>
 </div>
 <div class="form-group">
     <label for="donor">Donor:</label>
-    <input type="text" class="form-control" name="donor" placeholder="Your Name" value="{{donation.donor}}">
+    <input type="text" class="form-control" name="donor" placeholder="Your Name" value="{{donation.donor}}" required>
 </div>
 <div class="form-group">
     <label for="charity">For Charity:</label>
