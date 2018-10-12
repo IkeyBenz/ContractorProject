@@ -6,6 +6,7 @@
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Previous Donations</a>
     <a href="/charities/{{charity._id}}/donations/new" class="btn btn-success">Donate</a>
     <a href="/charities/{{charity._id}}/delete?_method=delete" class="btn btn-danger">Delete</a>
+    <a href="/charities/{{charity._id}}/update" class="btn btn-warning">Edit</a>
     <div class="collapse" id="collapseExample">
         {{#each charity.donations}}
         <div class="card card-body">

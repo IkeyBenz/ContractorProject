@@ -1,6 +1,6 @@
 <div class="container">
 {{#if charity}}
-<form action="/charities/{{this._id}}/update?_method=PUT" method="POST">
+<form action="/charities/{{charity._id}}/update?_method=PUT" method="POST">
 {{else}}
 <form action="/charities/new" method="POST">
 {{/if}}

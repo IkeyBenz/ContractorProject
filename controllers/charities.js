@@ -22,7 +22,7 @@ module.exports = function (app) {
     });
 
     app.get('/charities/:charityId/update', (req, res) => {
-        Charity.findOne({_id: req.params.charityId}).then(charity => {
+        Charity.findById(req.params.charityId).then(charity => {
             res.render('charity-form', { charity: charity });
         }).catch(console.error);
     });
