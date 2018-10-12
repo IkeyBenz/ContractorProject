@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/charities', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/charities', { useNewUrlParser: true });
 
 const app = express();
 const port = process.env.PORT || 5000;
